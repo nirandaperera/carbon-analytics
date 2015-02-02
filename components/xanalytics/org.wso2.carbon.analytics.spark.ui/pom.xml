@@ -73,6 +73,7 @@
                             <Export-Package>
                               org.wso2.carbon.analytics.spark.ui.*;version="${carbon.platform.package.export.version}"
                             </Export-Package>
+                            <Import-Package>org.apache.spark.*;version="[1.2.0, 2.0.0)"</Import-Package>
                             <DynamicImport-Package>*</DynamicImport-Package>
                             <Carbon-Component>UIBundle</Carbon-Component>                     
                         </instructions>
