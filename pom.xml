@@ -56,14 +56,14 @@
                 <version>2.4.2</version>
             </dependency>
             <dependency>
-                <groupId>org.apache.spark</groupId>
-                <artifactId>spark-core_2.10</artifactId>
-                <version>1.2.0</version>
+                <groupId>org.apache.spark.wso2</groupId>
+                <artifactId>spark-core</artifactId>
+                <version>1.2.0.wso2v1</version>
             </dependency>
             <dependency>
-                <groupId>org.apache.spark</groupId>
-                <artifactId>spark-sql_2.10</artifactId>
-                <version>1.2.0</version>
+                <groupId>org.apache.spark.wso2</groupId>
+                <artifactId>spark-sql</artifactId>
+                <version>1.2.0.wso2v1</version>
             </dependency>
             <dependency>
                 <groupId>xerces</groupId>

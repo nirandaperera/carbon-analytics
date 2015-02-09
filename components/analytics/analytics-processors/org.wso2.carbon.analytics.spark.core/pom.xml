@@ -30,12 +30,12 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.apache.spark</groupId>
-            <artifactId>spark-core_2.10</artifactId>
+            <groupId>org.apache.spark.wso2</groupId>
+            <artifactId>spark-core</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.apache.spark</groupId>
-            <artifactId>spark-sql_2.10</artifactId>
+            <groupId>org.apache.spark.wso2</groupId>
+            <artifactId>spark-sql</artifactId>
         </dependency>
         <dependency>
             <groupId>org.wso2.carbon.analytics</groupId>
@@ -65,7 +65,6 @@
                     <instructions>
                         <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
                         <Export-Package>org.wso2.carbon.analytics.spark.core.*</Export-Package>
-                        <!--<Import-Package>org.apache.lucene.*;version="[4.10.3, 5.0.0)"</Import-Package>-->
                         <DynamicImport-Package>*</DynamicImport-Package>
                     </instructions>
                 </configuration>
