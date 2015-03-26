@@ -128,7 +128,7 @@ public class SparkAnalyticsExecutor implements GroupEventListener {
         Master.startSystemAndActor(host, port, webUIport, this.sparkConf);
     }
     
-    private void startWorker(String workerHost, String masterHost, int masterPort, int p1, int p2) {
+    private void startWorker(String workerHost, String masterHost, int masterPort, int p1, int p2, final int workerNumber) {
         Worker.startSystemAndActor(workerHost, p1, p2, 2, 1000000, new String[] { "spark://" + masterHost + ":" + masterPort },
                 null, new Option<Object>() {
             
@@ -141,7 +141,7 @@ public class SparkAnalyticsExecutor implements GroupEventListener {
 
                     @Override
                     public Object get() {
-                        return new Integer(1);
+                        return workerNumber; //new Integer(workerNumber);
                     }
 
                     @Override
@@ -515,7 +515,15 @@ public class SparkAnalyticsExecutor implements GroupEventListener {
         int masterPort = (Integer) acm.getProperty(CLUSTER_GROUP_NAME, MASTER_PORT_GROUP_PROP);
         int p1 = P1_BASE_PORT + this.portOffset;
         int p2 = P2_BASE_PORT + this.portOffset;
-        this.startWorker(this.myHost, masterHost, masterPort, p1, p2);
+
+        int count =0;
+        try {
+            count = acm.getMembers(CLUSTER_GROUP_NAME).size();
+        } catch (AnalyticsClusterException e) {
+            log.error("Error in extracting the worker count: " + e.getMessage(), e);
+        }
+
+        this.startWorker(this.myHost, masterHost, masterPort, p1, p2, count);
 
         if (acm.isLeader(CLUSTER_GROUP_NAME)) {
             this.initClient("spark://" + this.myHost + ":" + masterPort);
