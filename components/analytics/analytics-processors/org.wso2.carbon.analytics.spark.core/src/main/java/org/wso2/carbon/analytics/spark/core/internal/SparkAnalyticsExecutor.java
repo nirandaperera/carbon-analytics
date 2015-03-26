@@ -192,7 +192,7 @@ public class SparkAnalyticsExecutor implements GroupEventListener {
         }
     }
 
-    public void stop() {
+    public void stop() { //todo: validate if both of these needs to be closed
         if (this.sqlCtx != null) {
             this.sqlCtx.sqlContext().sparkContext().stop();
             this.sparkCtx.close();
@@ -526,7 +526,7 @@ public class SparkAnalyticsExecutor implements GroupEventListener {
         this.startWorker(this.myHost, masterHost, masterPort, p1, p2, count);
 
         if (acm.isLeader(CLUSTER_GROUP_NAME)) {
-            this.initClient("spark://" + this.myHost + ":" + masterPort);
+//            this.initClient("spark://" + this.myHost + ":" + masterPort);
         }
 
         log.info("Analytics worker started: [" + this.myHost + ":" + p1 + ":" + p2 + "] "
