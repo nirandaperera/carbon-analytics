@@ -31,11 +31,11 @@
         </dependency>
         <!--spark -->
         <dependency>
-            <groupId>org.wso2.apache.spark</groupId>
+            <groupId>org.wso2.orbit.org.apache.spark</groupId>
             <artifactId>spark-core_2.10</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.wso2.apache.spark</groupId>
+            <groupId>org.wso2.orbit.org.apache.spark</groupId>
             <artifactId>spark-sql_2.10</artifactId>
         </dependency>
 
@@ -60,19 +60,19 @@
         </dependency>
 
         <dependency>
-            <groupId>com.codahale.metrics</groupId>
+            <groupId>io.dropwizard.metrics</groupId>
             <artifactId>metrics-core</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.codahale.metrics</groupId>
+            <groupId>io.dropwizard.metrics</groupId>
             <artifactId>metrics-graphite</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.codahale.metrics</groupId>
+            <groupId>io.dropwizard.metrics</groupId>
             <artifactId>metrics-json</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.codahale.metrics</groupId>
+            <groupId>io.dropwizard.metrics</groupId>
             <artifactId>metrics-jvm</artifactId>
         </dependency>
 
@@ -230,6 +230,11 @@
             <artifactId>javax.servlet.jsp-api</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.roaringbitmap</groupId>
+            <artifactId>RoaringBitmap</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -270,16 +275,16 @@
                                 <bundleDef>org.wso2.carbon.analytics:org.wso2.carbon.analytics.spark.core</bundleDef>
                                 <bundleDef>org.wso2.carbon.analytics:org.wso2.carbon.analytics.spark.admin</bundleDef>
                                 <bundleDef>org.wso2.carbon.analytics:org.wso2.carbon.analytics.spark.utils</bundleDef>
-                                <bundleDef>org.wso2.apache.spark:spark-core_2.10</bundleDef>
-                                <bundleDef>org.wso2.apache.spark:spark-sql_2.10</bundleDef>
+                                <bundleDef>org.wso2.orbit.org.apache.spark:spark-core_2.10</bundleDef>
+                                <bundleDef>org.wso2.orbit.org.apache.spark:spark-sql_2.10</bundleDef>
                                 <bundleDef>org.apache.commons:commons-lang3</bundleDef>
                                 <bundleDef>org.apache.commons:commons-math3</bundleDef>
                                 <bundleDef>org.scala-lang:scala-library</bundleDef>
                                 <bundleDef>org.scala-lang:scala-reflect</bundleDef>
-                                <bundleDef>com.codahale.metrics:metrics-json</bundleDef>
-                                <bundleDef>com.codahale.metrics:metrics-jvm</bundleDef>
-                                <bundleDef>com.codahale.metrics:metrics-core</bundleDef>
-                                <bundleDef>com.codahale.metrics:metrics-graphite</bundleDef>
+                                <bundleDef>io.dropwizard.metrics:metrics-json</bundleDef>
+                                <bundleDef>io.dropwizard.metrics:metrics-jvm</bundleDef>
+                                <bundleDef>io.dropwizard.metrics:metrics-core</bundleDef>
+                                <bundleDef>io.dropwizard.metrics:metrics-graphite</bundleDef>
                                 <bundleDef>com.fasterxml.jackson.core:jackson-databind</bundleDef>
                                 <bundleDef>com.fasterxml.jackson.core:jackson-core</bundleDef>
                                 <bundleDef>com.fasterxml.jackson.core:jackson-annotations</bundleDef>
@@ -311,6 +316,7 @@
                                 <bundleDef>org.wso2.orbit.org.apache.mesos:mesos</bundleDef>
                                 <bundleDef>com.google.protobuf:protobuf-java</bundleDef>
                                 <bundleDef>org.spark-project.protobuf:protobuf-java</bundleDef>
+                                <bundleDef>org.roaringbitmap:RoaringBitmap</bundleDef>
                             </bundles>
                             <importFeatures>
                                 <importFeatureDef>org.wso2.carbon.core:${carbon.kernel.version}
