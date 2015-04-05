@@ -10,7 +10,9 @@
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>org.wso2.carbon.analytics.spark.core</artifactId>
-    <description>This component is used for the core operations such as store, deploy, execute the script</description>
+    <description>This component is used for the core operations such as store, deploy, execute the
+        script
+    </description>
     <name>WSO2 Carbon - Analytics Spark Core</name>
     <packaging>bundle</packaging>
 
@@ -23,6 +25,14 @@
             <groupId>org.wso2.carbon.commons</groupId>
             <artifactId>org.wso2.carbon.ntask.core</artifactId>
         </dependency>
+        <!--        <dependency>
+                    <groupId>org.wso2.orbit.org.apache.spark</groupId>
+                    <artifactId>spark-core_2.10</artifactId>
+                </dependency>
+                <dependency>
+                    <groupId>org.wso2.orbit.org.apache.spark</groupId>
+                    <artifactId>spark-sql_2.10</artifactId>
+                </dependency>-->
         <dependency>
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-core_2.10</artifactId>
