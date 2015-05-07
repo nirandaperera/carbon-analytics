@@ -18,15 +18,6 @@
  */
 package org.wso2.carbon.analytics.dataservice.clustering;
 
-import com.hazelcast.core.HazelcastInstance;
-import com.hazelcast.core.Member;
-import com.hazelcast.core.MemberAttributeEvent;
-import com.hazelcast.core.MembershipEvent;
-import com.hazelcast.core.MembershipListener;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.wso2.carbon.analytics.dataservice.AnalyticsServiceHolder;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -37,6 +28,16 @@ import java.util.Set;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.wso2.carbon.analytics.dataservice.AnalyticsServiceHolder;
+
+import com.hazelcast.core.HazelcastInstance;
+import com.hazelcast.core.Member;
+import com.hazelcast.core.MemberAttributeEvent;
+import com.hazelcast.core.MembershipEvent;
+import com.hazelcast.core.MembershipListener;
 
 /**
  * This class represents an {@link AnalyticsClusterManager} implementation.
@@ -146,10 +147,7 @@ public class AnalyticsClusterManagerImpl implements AnalyticsClusterManager, Mem
     
     private void executeMyselfBecomingLeader(String groupId) throws AnalyticsClusterException {
         this.leaders.put(groupId, this.hz.getCluster().getLocalMember());
-        GroupEventListener listener = this.groups.get(groupId);
-        if (listener != null) {
-            listener.onBecomingLeader();
-        }
+        this.groups.get(groupId).onBecomingLeader();
         this.executeAll(groupId, new LeaderUpdateNotification(groupId));
     }
     
@@ -259,10 +257,7 @@ public class AnalyticsClusterManagerImpl implements AnalyticsClusterManager, Mem
         }
         if (this.isLeader(groupId)) {
             /* if I'm already the leader, notify of the membership change */
-            GroupEventListener listener = this.groups.get(groupId);
-            if (listener != null) {
-                listener.onMembersChangeForLeader();
-            }
+            this.groups.get(groupId).onMembersChangeForLeader();
         } else if (this.checkLeader(this.hz.getCluster().getLocalMember(), groupId)) {
             /* check if I'm already not the leader, and if I just became the leader */
             this.executeMyselfBecomingLeader(groupId);
